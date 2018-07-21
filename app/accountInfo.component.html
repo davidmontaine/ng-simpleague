@@ -1,0 +1,28 @@
+<br />
+<h3>Update Account Information</h3>
+<form [formGroup]="form" (ngSubmit)="onsubmit(form.value)" novalidate class="form-horizontal">
+    <div class="form-group">
+        <div class="col-xs-6">
+            <div *ngIf="error" class="text-danger">{{error}}</div>
+        </div>
+    </div>            
+    <div class="form-group required" [ngClass]="{ 'has-error': form.controls.name.errors?.pattern }">                
+        <div class="col-xs-6">            
+            <label for="name" class="control-label">Name:</label>
+            <input type="text" class="form-control" name="name" formControlName="name" maxlength="50" autofocus />
+            <div *ngIf="form.controls.name.errors?.pattern" class="text-danger">Enter a valid email name</div>
+        </div>
+    </div>
+    <div class="form-group required" [ngClass]="{ 'has-error': form.controls.email.errors?.pattern }">                
+        <div class="col-xs-6">            
+            <label for="email" class="control-label">Email:</label>
+            <input type="text" class="form-control" name="email" formControlName="email" maxlength="50" />
+            <div *ngIf="form.controls.email.errors?.pattern" class="text-danger">Enter a valid email address</div>
+            <input type="hidden" name="emailCurrent" />            
+        </div>
+    </div>        
+    <div class="btn-toolbar">                        
+        <button type="submit" [disabled]="loading || form.controls.email.errors?.pattern || form.controls.name.errors?.required || form.controls.email.errors?.required" class="btn btn-primary btn-primary-spacing">Submit</button>
+        <button type="button" class="btn btn-default btn-primary-spacing" routerLink="../home">Cancel</button>            
+    </div>
+</form>

@@ -1,0 +1,44 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+            </button>
+            <a routerLink="./home" class="navbar-brand">SimpLeague</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a routerLink="./home">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Options<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a routerLink="./league">League</a></li>
+                    </ul>
+                </li>
+                <li><a routerLink="./about">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <template [ngIf]="email == ''">
+                    <li><a routerLink="./signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a routerLink="./league"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                </template>
+                <template [ngIf]="email != ''">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> {{email}}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a routerLink="./accountInfo">Update Account Information</a></li>
+                            <li><a routerLink="./resetPassword">Reset Password</a></li>
+                            <li><hr /></li>
+                            <li><a routerLink="./logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                        </ul>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>
+</nav>        
+<div class="container">
+    <router-outlet></router-outlet>            
+</div>

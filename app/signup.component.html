@@ -1,0 +1,42 @@
+<br />
+<h3>Sign Up</h3>
+<form [formGroup]="form" (ngSubmit)="onsubmit(form.value)" novalidate class="form-horizontal">
+    <div class="form-group">
+        <div class="col-xs-6">
+            <div *ngIf="error" class="text-danger">{{error}}</div>
+        </div>
+    </div>            
+    <div class="form-group required" [ngClass]="{ 'has-error': form.controls.name.errors?.pattern }">                
+        <div class="col-xs-6">            
+            <label for="name" class="control-label">Name:</label>
+            <input type="text" class="form-control" name="name" formControlName="name" maxlength="50" autofocus />
+            <div *ngIf="form.controls.name.errors?.pattern" class="text-danger">Enter a valid email name</div>
+        </div>
+    </div>
+    <div class="form-group required" [ngClass]="{ 'has-error': form.controls.email.errors?.pattern }">                
+        <div class="col-xs-6">            
+            <label for="email" class="control-label">Email:</label>
+            <input type="text" class="form-control" name="email" formControlName="email" maxlength="50" />
+            <div *ngIf="form.controls.email.errors?.pattern" class="text-danger">Enter a valid email address</div>
+        </div>
+    </div>        
+    <div [formGroup]="passwordForm">        
+        <div class="form-group required" [ngClass]="{ 'has-error': passwordForm.errors?.password }">                
+            <div class="col-xs-6">            
+                <label for="password" class="control-label">Password:</label>
+                <input type="password" class="form-control" name="password" formControlName="password" maxlength="10" />
+                <div *ngIf="passwordForm.errors?.password" class="text-danger">Enter a valid password</div>                    
+            </div>
+            </div>                
+            <div class="form-group required">                
+                <div class="col-xs-6">            
+                    <label for="passwordVerify" class="control-label">Password (Verify):</label>
+                    <input type="password" class="form-control" name="passwordVerify" formControlName="passwordVerify" maxlength="10" />
+                </div>
+            </div>   
+        </div>         
+        <div class="btn-toolbar">                        
+            <button type="submit" [disabled]="loading || form.controls.email.errors?.pattern || form.controls.name.errors?.required || form.controls.email.errors?.required || passwordForm.controls.password.errors?.required || passwordForm.controls.passwordVerify.errors?.required || passwordForm.errors?.password" class="btn btn-primary btn-primary-spacing">Submit</button>
+            <button type="button" class="btn btn-default btn-primary-spacing" routerLink="../home">Cancel</button>            
+        </div>
+</form>
