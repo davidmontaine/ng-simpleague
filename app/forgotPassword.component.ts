@@ -7,7 +7,7 @@ import { UserService } from './_services/user.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'sl-league',
+  selector: 'sl-forgotPassword',
   templateUrl: 'forgotPassword.component.html'
 })
 
