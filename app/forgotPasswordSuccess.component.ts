@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'sl-about',
+  selector: 'sl-forgotPasswordSuccess',
   template: `
     <br />
     <h3>Forgot password?</h3>
